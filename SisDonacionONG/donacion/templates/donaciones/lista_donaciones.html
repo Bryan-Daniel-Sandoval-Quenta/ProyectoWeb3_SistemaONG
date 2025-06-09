@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Historial de Donaciones</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Monto</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for donacion in donaciones %}
+            <tr>
+                <td>{{ donacion.id }}</td>
+                <td>${{ donacion.monto }}</td>
+                <td>{{ donacion.fecha|date:"d/m/Y" }}</td>
+                <td>
+                    <span class="badge bg-{% if donacion.estado == 'C' %}success{% else %}warning{% endif %}">
+                        {{ donacion.get_estado_display }}
+                    </span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
