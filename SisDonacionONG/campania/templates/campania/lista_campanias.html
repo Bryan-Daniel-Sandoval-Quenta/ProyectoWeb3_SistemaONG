@@ -27,6 +27,7 @@
                 <th>Fecha Inicio</th>
                 <th>Fecha Límite</th>
                 <th>Estado</th>
+                <th>Donantes</th>
             </tr>
         </thead>
         <tbody>
@@ -37,6 +38,15 @@
                 <td>{{ c.fecha_inicio }}</td>
                 <td>{{ c.fecha_limite }}</td>
                 <td>{{ c.get_estado_display }}</td>
+                <td>
+                    <ul>
+                        {% for d in c.donantes.all %}
+                            <li>{{ d.nombre }} (DNI: {{ d.dni }})</li>
+                        {% empty %}
+                            <li>No hay donantes</li>
+                        {% endfor %}
+                    </ul>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
