@@ -2,22 +2,31 @@
 
 {% block content %}
 <style>
+    .container {
+        margin: 40px auto;
+        max-width: 900px;
+    }
     table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
+        font-size: 16px;
     }
     th, td {
-        padding: 12px;
+        padding: 12px 15px;
         border: 1px solid #ccc;
         text-align: left;
     }
     thead {
-        background-color: #f8f8f8;
+        background-color: #f4f4f4;
+    }
+    h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
     }
 </style>
 
-<div class="container mt-4">
+<div class="container">
     <h2>Lista de Campañas</h2>
     <table>
         <thead>
