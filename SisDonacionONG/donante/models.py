@@ -1,4 +1,5 @@
 from django.db import models
+from campania.models import Campania  
 
 class Donante(models.Model):
     nombre = models.CharField(
@@ -14,6 +15,14 @@ class Donante(models.Model):
     dni = models.CharField(
         max_length=15, 
         unique=True
+    )
+    
+    campania = models.ForeignKey(
+        Campania,
+        on_delete=models.CASCADE,
+        related_name='donantes',
+        null=True,
+        blank=True
     )
 
     class Meta:
