@@ -6,6 +6,3 @@ urlpatterns = [
     path('lista_donaciones/', ListaDonacionesView.as_view(), name='lista_donaciones'),
     path('donacion_exitosa/', DonacionExitosaView.as_view(), name='donacion_exitosa'),
 ]
-
-
-
