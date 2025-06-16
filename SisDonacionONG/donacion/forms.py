@@ -4,7 +4,7 @@ from .models import Donacion
 class DonacionForm(forms.ModelForm):
     class Meta:
         model = Donacion
-        fields = ['monto', 'mensaje', 'comprobante']
+        fields = ['transaccion','monto', 'mensaje', 'comprobante']
         widgets = {
             'monto': forms.NumberInput(attrs={
                 'min': 1,

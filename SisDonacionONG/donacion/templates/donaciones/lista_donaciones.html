@@ -7,6 +7,7 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Transacción</th><!-- nueva columna -->
                 <th>Monto</th>
                 <th>Fecha</th>
                 <th>Estado</th>
@@ -16,6 +17,7 @@
             {% for donacion in donaciones %}
             <tr>
                 <td>{{ donacion.id }}</td>
+                <td>{{ donacion.transaccion.id }}</td><!-- aquí estás mostrando el id de la transacción -->
                 <td>${{ donacion.monto }}</td>
                 <td>{{ donacion.fecha|date:"d/m/Y" }}</td>
                 <td>
@@ -29,3 +31,4 @@
     </table>
 </div>
 {% endblock %}
+

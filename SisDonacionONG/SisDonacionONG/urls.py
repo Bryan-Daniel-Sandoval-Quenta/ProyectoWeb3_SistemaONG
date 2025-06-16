@@ -23,6 +23,6 @@ urlpatterns = [
     path('ong/', include('ong.urls')),
     path('transaccion/', include('transaccion.urls')),
     path('donante/', include('donante.urls')),
-    path('donacion/', include('donacion.urls')),  # ← muestra lista de donaciones en /donacion/
+    path('donacion/', include('donacion.urls')),  
 ]
 
