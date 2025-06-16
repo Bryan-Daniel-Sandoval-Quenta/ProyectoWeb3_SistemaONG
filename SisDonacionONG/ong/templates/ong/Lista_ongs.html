@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de ONGs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .ong {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+        }
+
+        .ong h2 {
+            margin: 0;
+            color: #2c3e50;
+        }
+
+        .ong p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Listado de ONGs</h1>
+
+    <a href="{% url 'crear_ong' %}" class="btn btn-primary mb-3">Registrar nueva ONG</a>
+
+
+    {% for ong in ongs %}
+        <div class="ong">
+            <h2>{{ ong.nombre }}</h2>
+            <p><strong>Descripción:</strong> {{ ong.descripcion }}</p>
+            <p><strong>Misión:</strong> {{ ong.mision }}</p>
+            <p><strong>Visión:</strong> {{ ong.vision }}</p>
+            <p><strong>Dirección:</strong> {{ ong.direccion }}</p>
+            <p><strong>Teléfono:</strong> {{ ong.telefono }}</p>
+            <p><strong>Email:</strong> {{ ong.email }}</p>
+            <p><strong>Registrado por:</strong> {{ ong.usuario.username }}</p>
+        </div>
+    {% empty %}
+        <p>No hay ONGs registradas aún.</p>
+    {% endfor %}
+</body>
+</html>
+{% endblock %}s

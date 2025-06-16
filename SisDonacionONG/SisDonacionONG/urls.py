@@ -18,11 +18,15 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    
     path('admin/', admin.site.urls),
     path('', include('campania.urls')),
     path('', include('ong.urls')),
+      
+
     path('', include('transaccion.urls')),
     path('', include('donante.urls')),
     path('', include('donacion.urls')),  
+    
 ]
 
