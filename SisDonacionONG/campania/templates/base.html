@@ -86,13 +86,16 @@
 <body>
     <nav>
         <ul class="navbar">
+            <li><a href="{% url 'inicio' %}">Inicio</a></li>
             <li><a href="{% url 'lista_campanias' %}">Lista de Campañas</a></li>
             <li><a href="{% url 'crear_campania' %}">Crear Campaña</a></li>
+            <li><a href="{% url 'crear_donante' %}">Crear Donante</a></li>
+            <li><a href="{% url 'lista_donantes' %}">Lista de Donantes</a></li>
+
         </ul>
     </nav>
     <main>
         <h1>SISTEMA DE DONACIONES ONG</h1>
-        <h2>CAMPANIA</h2>
 
         {% block content %}
         {% endblock %}

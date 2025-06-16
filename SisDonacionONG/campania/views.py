@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, TemplateView
 from django.urls import reverse_lazy
 from .models import Campania
 from .forms import CampaniaForm
@@ -13,3 +13,6 @@ class ListaCampaniasView(ListView):
     model = Campania
     template_name = 'campania/lista_campanias.html'
     context_object_name = 'campanias'
+
+class InicioView(TemplateView):
+    template_name = 'campania/inicio.html'
