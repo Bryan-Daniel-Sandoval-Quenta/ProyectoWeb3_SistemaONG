@@ -1,0 +1,31 @@
+{% extends 'Transaccion/base.html' %} {% block content %}
+<div class="container mt-4">
+    <h2 class="mb-3 text-primary" style="font-weight: bold;" >Listado de Transacciones</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Donante</th>
+                    <th>ID Transacción de Donante</th>
+                    <th>Proveedor Pago</th>
+                    <th>Fecha de Procesamiento</th>
+                    <th>Estado</th>
+                    <th>Comisión</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaccion in transacciones %}
+                <tr>
+                    <td>{{ transaccion.donante}}</td>
+                    <td>{{ transaccion.id_transacciones_donante}}</td>
+                    <td>{{ transaccion.proveedor_Pago }}</td>
+                    <td>{{ transaccion.fecha_Procesamiento|date:"d/m/y H:i:s" }}</td>
+                    <td>{{ transaccion.estado }}</td>
+                    <td>{{ transaccion.comision }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

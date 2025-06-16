@@ -1,14 +1,7 @@
-{% extends 'donante/base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
 <style>
-    body {
-        background: linear-gradient(to right, #e3f2fd, #bbdefb);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-
     .container {
         max-width: 600px;
         background-color: #ffffff;
@@ -37,7 +30,8 @@
     input[type="email"],
     input[type="number"],
     select,
-    textarea {
+    textarea,
+    input[type="date"] {
         width: 100%;
         padding: 10px 12px;
         margin-top: 5px;
@@ -74,11 +68,11 @@
 </style>
 
 <div class="container">
-    <h2>Registrar Donante</h2>
+    <h2>Registrar Nueva Campaña</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn-submit">Guardar donante</button>
+        <button type="submit" class="btn-submit">Guardar</button>
     </form>
 </div>
 {% endblock %}

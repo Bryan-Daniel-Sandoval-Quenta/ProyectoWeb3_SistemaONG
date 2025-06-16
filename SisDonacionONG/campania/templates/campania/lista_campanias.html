@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .container {
+        margin: 40px auto;
+        max-width: 900px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-size: 16px;
+    }
+    th, td {
+        padding: 12px 15px;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+    thead {
+        background-color: #f4f4f4;
+    }
+    h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+</style>
+
+<div class="container">
+    <h2>Lista de Campañas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Meta Financiera</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Límite</th>
+                <th>Estado</th>
+                <th>Donantes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in campanias %}
+            <tr>
+                <td>{{ c.titulo }}</td>
+                <td>${{ c.meta_financiera }}</td>
+                <td>{{ c.fecha_inicio }}</td>
+                <td>{{ c.fecha_limite }}</td>
+                <td>{{ c.get_estado_display }}</td>
+                <td>
+                    <ul>
+                        {% for d in c.donantes.all %}
+                            <li>{{ d.nombre }} (DNI: {{ d.dni }})</li>
+                        {% empty %}
+                            <li>No hay donantes</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
