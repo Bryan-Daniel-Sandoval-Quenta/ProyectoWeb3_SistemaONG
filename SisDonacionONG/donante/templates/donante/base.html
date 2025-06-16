@@ -1,107 +1,143 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Donante</title>
-        <style>
-            nav {
-                background-color:rgb(70, 144, 167);
-                padding: 12px 0;
-                box-shadow: 0 2px 8px rgba(25, 118, 210, 0.4);
-            }
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Campaña</title>
+    <style>
+        nav {
+            background-color: rgb(70, 144, 167);
+            padding: 12px;
+            box-shadow: 0 2px 8px rgba(25, 118, 210, 0.4);
+            position: relative;
+        }
 
-            .navbar {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-                max-width: 900px;
-                margin-left: auto;
-                margin-right: auto;
-                display: flex;
-                justify-content: center;
-                gap: 30px;
-            }
+        .menu-toggle {
+            font-size: 24px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
 
-            .navbar li a {
-                color: white;
-                text-decoration: none;
-                font-weight: 600;
-                font-size: 16px;
-                padding: 8px 15px;
-                border-radius: 8px;
-                transition: background-color 0.3s ease;
-            }
+        .navbar {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: rgb(70, 144, 167);
+            width: 200px;
+            border-radius: 8px;
+            padding: 10px 0;
+            box-shadow: 0 4px 8px rgba(25, 118, 210, 0.4);
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-            .navbar li a:hover {
-                background-color: #1565c0;
-            }
+        .navbar.show {
+            display: flex;
+        }
 
-            body {
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #f0f4f8;
-                color: #333;
-            }
+        .navbar li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 12px 15px; 
+            border-radius: 8px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
 
-            main {
-                padding: 20px;
-                max-width: 900px;
-                margin: 0 auto;
-            }
+        .navbar li a:hover {
+            background-color: #1565c0;
+        }
 
-            h1 {
-                background-color: #1976d2; 
-                color: white;
-                margin: 0;
-                padding: 20px 0;
-                text-align: center;
-                font-weight: 700;
-                letter-spacing: 1.5px;
-                border-radius: 0 0 15px 15px;
-                box-shadow: 0 4px 8px rgba(25, 118, 210, 0.4);
-            }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
+        }
 
-            h2 {
-                text-align: center;
-                margin-top: 10px;
-                color: #0d47a1; 
-                font-weight: 600;
-            }
+        main {
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
-            footer {
-                background-color: #1976d2; 
-                color: white;
-                text-align: center;
-                padding: 12px 0;
-                
-                bottom: 0;
-                width: 100%;
-                font-weight: 500;
-                box-shadow: 0 -3px 8px rgba(25, 118, 210, 0.4);
-                user-select: none;
-            }
+        h1 {
+            background-color: #1976d2; 
+            color: white;
+            margin: 0;
+            padding: 20px 0;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 8px rgba(25, 118, 210, 0.4);
+        }
 
-        </style>
-    </head>
-    <body>
-        <nav>
-            <ul class="navbar">
-                <li><a href="{% url 'lista_donantes' %}">Lista de Donantes</a></li>
-                <li><a href="{% url 'crear_donante' %}">Crear Donante</a></li>
-            </ul>
-        </nav>
-        <main>
-            <h1>SISTEMA DE DONACIONES ONG</h1>
-            <h2>DONANTE</h2>
+        h2 {
+            text-align: center;
+            margin-top: 10px;
+            color: #0d47a1; 
+            font-weight: 600;
+        }
 
-            {% block content %}
-            {% endblock %}
-        </main>
+        footer {
+            background-color: #1976d2; 
+            color: white;
+            text-align: center;
+            padding: 12px 0;
+            bottom: 0;
+            width: 100%;
+            font-weight: 500;
+            box-shadow: 0 -3px 8px rgba(25, 118, 210, 0.4);
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+        <ul class="navbar">
+            <li><a href="{% url 'inicio' %}">Inicio</a></li>
+            <li><a href="{% url 'lista_campanias' %}">Lista de Campañas</a></li>
+            <li><a href="{% url 'crear_campania' %}">Crear Campaña</a></li>
+            <li><a href="{% url 'lista_donantes' %}">Lista de Donantes</a></li>
+            <li><a href="{% url 'crear_donante' %}">Crear Donante</a></li>
+            <li><a href="{% url 'lista_transaccion' %}">Lista transacciones</a></li>
+            <li><a href="{% url 'crear_transaccion' %}">Crear ID transaccion</a></li>
+            <li><a href="{% url 'lista_donaciones' %}">Historial donaciones</a></li>
+            <li><a href="{% url 'crear_donacion' %}">Crear donacion</a></li>
+            <li><a href="{% url 'lista_ongs' %}">Lista ONGs</a></li>
+            <li><a href="{% url 'crear_ong' %}">Crear ONG</a></li>
+            <li><a href="/admin/">log in</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>SISTEMA DE DONACIONES ONG</h1>
 
-        <footer>
-            <p>&copy; 2025 Sistema de Donaciones ONG - Todos los derechos reservados.</p>
-        </footer>
-    </body>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sistema de Donaciones ONG - Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navbar = document.querySelector('.navbar');
+
+        menuToggle.addEventListener('click', () => {
+            navbar.classList.toggle('show');
+        });
+    </script>
+</body>
 </html>
