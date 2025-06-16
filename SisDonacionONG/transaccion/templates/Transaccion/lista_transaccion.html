@@ -5,7 +5,8 @@
         <table class="table table-bordered table-striped table-hover">
             <thead class="table-dark">
                 <tr>
-                    <th>Código Transacción</th>
+                    <th>Donante</th>
+                    <th>ID Transacción de Donante</th>
                     <th>Proveedor Pago</th>
                     <th>Fecha de Procesamiento</th>
                     <th>Estado</th>
@@ -15,9 +16,10 @@
             <tbody>
                 {% for transaccion in transacciones %}
                 <tr>
-                    <td>{{ transaccion.codigo_transaccion }}</td>
+                    <td>{{ transaccion.donante}}</td>
+                    <td>{{ transaccion.id_transacciones_donante}}</td>
                     <td>{{ transaccion.proveedor_Pago }}</td>
-                    <td>{{ transaccion.fecha_Procesamiento|date:"d/m/y" }}</td>
+                    <td>{{ transaccion.fecha_Procesamiento|date:"d/m/y H:i:s" }}</td>
                     <td>{{ transaccion.estado }}</td>
                     <td>{{ transaccion.comision }}</td>
                 </tr>

@@ -1,7 +1,9 @@
 from django.db import models
 from django.utils import timezone
+from donante.models import Donante
 class Transaccion(models.Model):
-    codigo_transaccion = models.CharField(max_length=100)
+    donante = models.ForeignKey(Donante, on_delete=models.CASCADE, default=1)
+    id_transacciones_donante = models.CharField(max_length=100)
     proveedor_Pago = models.CharField(max_length=100)
     fecha_Procesamiento=models.DateTimeField(default=timezone.now)
     estado = models.CharField(max_length=100)
@@ -10,6 +12,7 @@ class Transaccion(models.Model):
 class Meta:
     ordering = ['-fecha_Procesamiento'] 
     verbose_name_plural = 'Transacciones'
+    
 
 def __str__(self):
-    return f"Transacción {self.codigo_transaccion} ({self.fecha_Procesamiento.strftime('%Y-%m-%d %H:%M')})"
+    return f"Transacción {self.id_transacciones_donante} ({self.fecha_Procesamiento.strftime('%Y-%m-%d %H:%M')})"
