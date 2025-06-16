@@ -7,20 +7,38 @@
     <style>
         nav {
             background-color: rgb(70, 144, 167);
-            padding: 12px 0;
+            padding: 12px;
             box-shadow: 0 2px 8px rgba(25, 118, 210, 0.4);
+            position: relative;
+        }
+
+        .menu-toggle {
+            font-size: 24px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
         }
 
         .navbar {
             list-style: none;
             margin: 0;
             padding: 0;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: rgb(70, 144, 167);
+            width: 200px;
+            border-radius: 8px;
+            padding: 10px 0;
+            box-shadow: 0 4px 8px rgba(25, 118, 210, 0.4);
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .navbar.show {
             display: flex;
-            justify-content: center;
-            gap: 30px;
         }
 
         .navbar li a {
@@ -28,8 +46,9 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 16px;
-            padding: 8px 15px;
+            padding: 12px 15px; 
             border-radius: 8px;
+            text-align: center;
             transition: background-color 0.3s ease;
         }
 
@@ -85,13 +104,20 @@
 </head>
 <body>
     <nav>
+        <button class="menu-toggle" aria-label="Abrir menú">☰</button>
         <ul class="navbar">
             <li><a href="{% url 'inicio' %}">Inicio</a></li>
             <li><a href="{% url 'lista_campanias' %}">Lista de Campañas</a></li>
             <li><a href="{% url 'crear_campania' %}">Crear Campaña</a></li>
-            <li><a href="{% url 'crear_donante' %}">Crear Donante</a></li>
             <li><a href="{% url 'lista_donantes' %}">Lista de Donantes</a></li>
-
+            <li><a href="{% url 'crear_donante' %}">Crear Donante</a></li>
+            <li><a href="{% url 'lista_transaccion' %}">Lista transacciones</a></li>
+            <li><a href="{% url 'crear_transaccion' %}">Crear ID transaccion</a></li>
+            <li><a href="{% url 'lista_donaciones' %}">Historial donaciones</a></li>
+            <li><a href="{% url 'crear_donacion' %}">Crear donacion</a></li>
+            <li><a href="{% url 'lista_ongs' %}">Lista ONGs</a></li>
+            <li><a href="{% url 'crear_ong' %}">Crear ONG</a></li>
+            <li><a href="/admin/">log in</a></li>
         </ul>
     </nav>
     <main>
@@ -104,5 +130,14 @@
     <footer>
         <p>&copy; 2025 Sistema de Donaciones ONG - Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navbar = document.querySelector('.navbar');
+
+        menuToggle.addEventListener('click', () => {
+            navbar.classList.toggle('show');
+        });
+    </script>
 </body>
 </html>
