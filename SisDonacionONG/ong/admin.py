@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import ONG
+from .models import Ong
 
-@admin.register(ONG)
+@admin.register(Ong)
 class ONGAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'email', 'telefono', 'usuario')
-    search_fields = ('nombre', 'email')
+    list_display = ('nombre', 'contacto', 'direccion')
+    search_fields = ('nombre', 'contacto')

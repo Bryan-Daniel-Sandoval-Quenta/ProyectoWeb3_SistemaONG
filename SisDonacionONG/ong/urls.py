@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import CrearONGView, ListaONGsView
+from .views import CrearOngView, ListaOngsView
 
 urlpatterns = [
-    path('lista_ongs/', ListaONGsView.as_view(), name='lista_ongs'),
-    path('crear_ong/', CrearONGView.as_view(), name='crear_ong'),
+    path('registrar_ong/', CrearOngView.as_view(), name='crear_ong'),
+    path('lista_ongs/', ListaOngsView.as_view(), name='lista_ongs'),
 ]

@@ -1,15 +1,16 @@
 from django.db import models
-from django.contrib.auth.models import User
 
-class ONG(models.Model):
+class Ong(models.Model):
     nombre = models.CharField(max_length=100)
-    descripcion = models.TextField()
-    mision = models.TextField()
-    vision = models.TextField()
-    direccion = models.CharField(max_length=200)
-    telefono = models.CharField(max_length=20)
-    email = models.EmailField()
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    descripcion = models.TextField(blank=True)
+    contacto = models.CharField(max_length=100, default='', blank=True)
+    direccion = models.TextField(blank=True)
+    mision = models.TextField(blank=True)
+    vision = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ['nombre']
+        verbose_name_plural = 'ONGs'
 
     def __str__(self):
         return self.nombre

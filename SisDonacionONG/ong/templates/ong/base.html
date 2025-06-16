@@ -1,53 +1,105 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sistema de Donaciones</title>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Tus estilos personalizados (opcional) -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ONG</title>
     <style>
-        body {
-            padding-top: 20px;
-            background-color: #f8f9fa;
+        nav {
+            background-color: rgb(70, 144, 167);
+            padding: 12px 0;
+            box-shadow: 0 2px 8px rgba(25, 118, 210, 0.4);
         }
-        .container {
-            max-width: 960px;
+
+        .navbar {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .navbar li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 8px 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar li a:hover {
+            background-color: #1565c0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            background-color: #1976d2; 
+            color: white;
+            margin: 0;
+            padding: 20px 0;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 8px rgba(25, 118, 210, 0.4);
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 10px;
+            color: #0d47a1; 
+            font-weight: 600;
+        }
+
+        footer {
+            background-color: #1976d2; 
+            color: white;
+            text-align: center;
+            padding: 12px 0;
+            bottom: 0;
+            width: 100%;
+            font-weight: 500;
+            box-shadow: 0 -3px 8px rgba(25, 118, 210, 0.4);
+            user-select: none;
         }
     </style>
 </head>
 <body>
-    <!-- Menú de navegación (ejemplo) -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
-        <div class="container">
-            <a class="navbar-brand" href="#">Donaciones ONG</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'crear_donacion' %}">Donar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'lista_donaciones' %}">Historial</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <nav>
+        <ul class="navbar">
+            <li><a href="{% url 'lista_ongs' %}">Lista de ONGs</a></li>
+            <li><a href="{% url 'crear_ong' %}">Crear ONG</a></li>
+        </ul>
     </nav>
+    <main>
+        <h1>SISTEMA DE DONACIONES ONG</h1>
+        <h2>ONG</h2>
 
-    <!-- Contenido específico de cada página -->
-    <div class="container">
-        {% block content %}{% endblock %}
-    </div>
+        {% block content %}
+        {% endblock %}
+    </main>
 
-    <!-- Bootstrap JS (necesario para menús desplegables) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <footer>
+        <p>&copy; 2025 Sistema de Donaciones ONG - Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>

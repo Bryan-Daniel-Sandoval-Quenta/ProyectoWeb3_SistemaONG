@@ -1,60 +1,56 @@
-{% extends 'base.html' %}
+{% extends 'ong/base.html' %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Listado de ONGs</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            padding: 40px;
-        }
+<style>
+    .container {
+        margin: 40px auto;
+        max-width: 1000px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-size: 16px;
+    }
+    th, td {
+        padding: 12px 15px;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+    thead {
+        background-color: #f4f4f4;
+    }
+    h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+</style>
 
-        h1 {
-            color: #333;
-        }
-
-        .ong {
-            background-color: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
-        }
-
-        .ong h2 {
-            margin: 0;
-            color: #2c3e50;
-        }
-
-        .ong p {
-            margin: 5px 0;
-        }
-    </style>
-</head>
-<body>
-    <h1>Listado de ONGs</h1>
-
-    <a href="{% url 'crear_ong' %}" class="btn btn-primary mb-3">Registrar nueva ONG</a>
-
-
-    {% for ong in ongs %}
-        <div class="ong">
-            <h2>{{ ong.nombre }}</h2>
-            <p><strong>Descripción:</strong> {{ ong.descripcion }}</p>
-            <p><strong>Misión:</strong> {{ ong.mision }}</p>
-            <p><strong>Visión:</strong> {{ ong.vision }}</p>
-            <p><strong>Dirección:</strong> {{ ong.direccion }}</p>
-            <p><strong>Teléfono:</strong> {{ ong.telefono }}</p>
-            <p><strong>Email:</strong> {{ ong.email }}</p>
-            <p><strong>Registrado por:</strong> {{ ong.usuario.username }}</p>
-        </div>
-    {% empty %}
-        <p>No hay ONGs registradas aún.</p>
-    {% endfor %}
-</body>
-</html>
-{% endblock %}s
+<div class="container">
+    <h2>Listado de ONGs</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Contacto</th>
+                <th>Dirección</th>
+                <th>Misión</th>
+                <th>Visión</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ong in ongs %}
+            <tr>
+                <td>{{ ong.id }}</td>
+                <td>{{ ong.nombre }}</td>
+                <td>{{ ong.contacto }}</td>
+                <td>{{ ong.direccion }}</td>
+                <td>{{ ong.mision }}</td>
+                <td>{{ ong.vision }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
